@@ -21,12 +21,17 @@ class User:
         Data.Add_Data(new_user)                                             
         return new_user
 
+    def Delete_User(uid):    
+        if True == Data.Search_Data(uid):
+            Data.Delete_Data(uid)
+        else:
+            print("Not Found!!!")
+
+    def List_User():
+        Data.List_Data()
+
+
 '''
-
-    def Delete_User(self, uid):
-
-    def List_User(self):
-
     def Print_User(self, uid):
 
     def Search_User(self, uid):    

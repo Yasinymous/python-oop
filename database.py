@@ -27,5 +27,29 @@ class Data:
         connection.commit()
         connection.close()
 
-        
-        
+    def Delete_Data(uid):
+        connection = sqlite3.connect("user_db.db")
+        cursor = connection.cursor()
+        cursor.execute('DELETE FROM Users WHERE uid=?',(uid,))
+        connection.commit()
+        connection.close()
+
+    def List_Data():
+        connection = sqlite3.connect("user_db.db")
+        cursor = connection.cursor()
+        cursor.execute('SELECT * from Users')
+        new_uid = 0
+        for uid in cursor.fetchall():
+            print(uid)
+
+    def Search_Data(search_id):
+        connection = sqlite3.connect("user_db.db")
+        cursor = connection.cursor()
+        cursor.execute('SELECT * from Users')
+        new_uid = 0
+        for uid in cursor.fetchall():
+            if (search_id == uid[0]):
+                return True
+            else:
+                return False
+
