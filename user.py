@@ -12,23 +12,32 @@ class User:
         self.name = name
         self.last_name = last_name
         self.age = age
-    def Add_User(name, last_name, age):     
-        print(Data.Control_Data_UID()) 
-        new_uid = int(Data.Control_Data_UID())
+    def Add_User(db):   
+        print('ADD USER OPERATİON')
+        name = input('First Name:')
+        last_name = input('Last Name:')
+        age = int(input('Age:'))
+        new_uid = int(Data.Control_Data_UID(db))
         new_user = User(new_uid,name,last_name,age)
         print ('uid {}, name {}, last_name {}, age {}'.format(new_user.uid, new_user.name, 
                                                         new_user.last_name, new_user.age))   
-        Data.Add_Data(new_user)                                             
+        Data.Add_Data(new_user,db)  
+        print('\n')                                           
         return new_user
 
-    def Delete_User(uid):    
-        if True == Data.Search_Data(uid):
-            Data.Delete_Data(uid)
+    def Delete_User(db):    
+        print('DELETE USER OPERATİON')
+        uid = int(input('Detele uid:'))
+        if True == Data.Search_Data(uid,db):
+            Data.Delete_Data(uid,db)
         else:
             print("Not Found!!!")
+        print('\n')
 
-    def List_User():
-        Data.List_Data()
+    def List_User(db):
+        print('LİST USER OPERATİON')
+        Data.List_Data(db)
+        print('\n')
 
 
 '''

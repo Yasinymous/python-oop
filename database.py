@@ -3,15 +3,15 @@ import sqlite3
 
 class Data:
 
-    def create_table():
-        connection = sqlite3.connect("user_db.db")
+    def create_table(db):
+        connection = sqlite3.connect(db)
         cursor = connection.cursor()
         cursor.execute('CREATE TABLE IF NOT EXISTS Users(uid INT UNIQUE,name TEXT,last_name TEXT,age INT)')
         connection.commit()
         connection.close()
 
-    def Control_Data_UID():
-        connection = sqlite3.connect("user_db.db")
+    def Control_Data_UID(db):
+        connection = sqlite3.connect(db)
         cursor = connection.cursor()
         cursor.execute('SELECT * from Users')
         new_uid = 0
@@ -20,30 +20,30 @@ class Data:
         return new_uid
             
         
-    def Add_Data(data):
-        connection = sqlite3.connect("user_db.db")
+    def Add_Data(data,db):
+        connection = sqlite3.connect(db)
         cursor = connection.cursor()
         cursor.execute('INSERT INTO Users VALUES(?,?,?,?)',(data.uid,data.name,data.last_name,data.age))
         connection.commit()
         connection.close()
 
-    def Delete_Data(uid):
-        connection = sqlite3.connect("user_db.db")
+    def Delete_Data(uid,db):
+        connection = sqlite3.connect(db)
         cursor = connection.cursor()
         cursor.execute('DELETE FROM Users WHERE uid=?',(uid,))
         connection.commit()
         connection.close()
 
-    def List_Data():
-        connection = sqlite3.connect("user_db.db")
+    def List_Data(db):
+        connection = sqlite3.connect(db)
         cursor = connection.cursor()
         cursor.execute('SELECT * from Users')
         new_uid = 0
         for uid in cursor.fetchall():
             print(uid)
 
-    def Search_Data(search_id):
-        connection = sqlite3.connect("user_db.db")
+    def Search_Data(search_id,db):
+        connection = sqlite3.connect(db)
         cursor = connection.cursor()
         cursor.execute('SELECT * from Users')
         new_uid = 0
