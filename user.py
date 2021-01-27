@@ -16,14 +16,26 @@ class User:
         print('ADD USER OPERATİON')
         name = input('First Name:')
         last_name = input('Last Name:')
-        age = int(input('Age:'))
-        new_uid = int(Data.Control_Data_UID(db))
-        new_user = User(new_uid,name,last_name,age)
-        print ('uid {}, name {}, last_name {}, age {}'.format(new_user.uid, new_user.name, 
-                                                        new_user.last_name, new_user.age))   
-        Data.Add_Data(new_user,db)  
+         
+        while True:
+            try:
+                age = int(input('Age:'))      
+            except ValueError:
+                print('Not an integer! Try again.')
+                next = input('try/off(y/n)')
+                if(next=='y'):
+                    continue
+                else:
+                    break
+            else:
+                new_uid = int(Data.Control_Data_UID(db))
+                new_user = User(new_uid,name,last_name,age)
+                print ('uid {}, name {}, last_name {}, age {}'.format(new_user.uid, new_user.name, 
+                                                                new_user.last_name, new_user.age))   
+                Data.Add_Data(new_user,db)  
+                break
+        
         print('\n')                                           
-        return new_user
 
     def Delete_User(db):    
         print('DELETE USER OPERATİON')
