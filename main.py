@@ -19,10 +19,13 @@ while (on==True):
             on = False
         elif(operation==1):
             User.Add_User(db)
+            continue
         elif(operation==2):
             User.Delete_User(db)
+            continue
         elif(operation==3):
             User.List_User(db)
+            continue
         else:
             print('Wrong Operations!!!')
         break 

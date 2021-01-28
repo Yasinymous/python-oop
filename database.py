@@ -45,9 +45,8 @@ class Data:
         cursor.execute('SELECT * from Users')
         new_uid = 0
         for uid in cursor.fetchall():
-            print(uid)
-            
-            
+            print(uid)    
+            return uid     
 
     def Search_Data(search_id,db):
         connection = sqlite3.connect(db)
